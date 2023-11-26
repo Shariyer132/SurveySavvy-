@@ -1,0 +1,44 @@
+[
+    {
+        "id": "testimonial1",
+        "name": "Anika Rahman",
+        "designation": "CEO of Tech Innovations",
+        "avatarUrl": "https://i.postimg.cc/mrt9464D/DALL-E-2023-11-24-22-18-17-Create-a-diverse-and-professional-avatar-of-a-female-individual-East-A.png",
+        "testimonialText": "Using this survey platform has transformed the way we gather customer feedback. The insights we've gained are invaluable."
+    },
+    {
+        "id": "testimonial2",
+        "name": "Rahim Chowdhury",
+        "designation": "Marketing Manager",
+        "avatarUrl": "https://i.postimg.cc/zXcP54Zb/DALL-E-2023-11-24-22-18-19-Create-a-diverse-and-professional-avatar-of-a-male-individual-Middle-E.png",
+        "testimonialText": "The user interface is intuitive and easy to navigate. Creating surveys has never been simpler or more fun."
+    },
+    {
+        "id": "testimonial3",
+        "name": "Sara Begum",
+        "designation": "Research Analyst",
+        "avatarUrl": "https://i.postimg.cc/TPqzRQJz/DALL-E-2023-11-24-22-16-39-Create-a-diverse-and-professional-avatar-of-a-female-individual-South.png",
+        "testimonialText": "I'm impressed with the depth of analysis and reporting that the platform provides. It's an essential tool for our market research."
+    },
+    {
+        "id": "testimonial4",
+        "name": "Kamal Hossain",
+        "designation": "Freelance Journalist",
+        "avatarUrl": "https://i.postimg.cc/pLdhQ1pZ/DALL-E-2023-11-24-22-18-15-Create-a-diverse-and-professional-avatar-of-a-male-individual-Black-de.png",
+        "testimonialText": "This platform has helped me collect opinions on various topics quickly and efficiently. It's incredibly user-friendly."
+    },
+    {
+        "id": "testimonial5",
+        "name": "Laila Akter",
+        "designation": "Product Manager",
+        "avatarUrl": "https://i.postimg.cc/mrt9464D/DALL-E-2023-11-24-22-18-17-Create-a-diverse-and-professional-avatar-of-a-female-individual-East-A.png",
+        "testimonialText": "The real-time results and analytics have made it easier for us to make data-driven decisions promptly."
+    },
+    {
+        "id": "testimonial6",
+        "name": "Javed Karim",
+        "designation": "Educator",
+        "avatarUrl": "https://i.postimg.cc/htwjL4FD/DALL-E-2023-11-24-22-16-43-Create-a-diverse-and-professional-avatar-of-a-male-individual-Caucasia.png",
+        "testimonialText": "For educational research, this survey tool has been a game-changer. It's helped us understand student needs better."
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "id": "faq1",
+        "question": "How do I create a survey?",
+        "answer": "Creating a survey is simple. Once you're logged in, go to the 'Create Survey' section, and you can start building your survey by adding questions and response options."
+    },
+    {
+        "id": "faq2",
+        "question": "Is there a limit to the number of surveys I can create?",
+        "answer": "No, there is no limit. You can create as many surveys as you need."
+    },
+    {
+        "id": "faq3",
+        "question": "Can I customize my surveys?",
+        "answer": "Absolutely! Our platform offers various customization options to make your survey fit your needs."
+    },
+    {
+        "id": "faq4",
+        "question": "How are the survey results analyzed?",
+        "answer": "Our platform automatically analyzes the results and provides you with detailed insights and reports."
+    },
+    {
+        "id": "faq5",
+        "question": "Can I export the data collected from my surveys?",
+        "answer": "Yes, you can export your survey data in multiple formats for further analysis or reporting."
+    },
+    {
+        "id": "faq6",
+        "question": "Is user data protected and private?",
+        "answer": "User privacy and data protection are our top priorities. We employ advanced security measures to protect all data."
+    }
+]

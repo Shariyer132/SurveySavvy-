@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import Navbar from "../Shared/Navbar/Navbar";
 
 
 
@@ -38,11 +39,12 @@ const SignUp = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>
                     Bistro Boss | Sign Up
                 </title>
-            </Helmet>
+            </Helmet> */}
+            <Navbar/>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">

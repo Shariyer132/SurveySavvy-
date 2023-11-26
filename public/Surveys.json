@@ -1,0 +1,122 @@
+[
+    {
+        "id": "survey1",
+        "title": "Opinions on Renewable Energy",
+        "description": "Share your views on the adoption of renewable energy sources.",
+        "category": "Environment",
+        "totalVotes": 152,
+        "createdAt": "2023-03-01T12:00:00Z",
+        "likeCount": 120,
+        "dislikeCount": 32
+    },
+    {
+        "id": "survey2",
+        "title": "Future of Remote Work",
+        "description": "What do you think about the future of remote working?",
+        "category": "Workplace",
+        "totalVotes": 200,
+        "createdAt": "2023-02-15T08:30:00Z",
+        "likeCount": 160,
+        "dislikeCount": 40
+    },
+    { 
+        "id": "survey3",
+        "title": "2023 Movie Industry Predictions",
+        "description": "Predict the trends in the movie industry for 2023.",
+        "category": "Entertainment",
+        "totalVotes": 250,
+        "createdAt": "2023-02-20T10:45:00Z",
+        "likeCount": 210,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey4",
+        "title": "Best Practices in Personal Finance",
+        "description": "Discuss the best strategies for managing personal finances.",
+        "category": "Finance",
+        "totalVotes": 180,
+        "createdAt": "2023-01-28T09:00:00Z",
+        "likeCount": 140,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey5",
+        "title": "Fitness Trends in 2023",
+        "description": "What are the upcoming trends in fitness this year?",
+        "category": "Health",
+        "totalVotes": 190,
+        "createdAt": "2023-03-05T15:30:00Z",
+        "likeCount": 150,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey6",
+        "title": "E-Commerce Shopping Habits",
+        "description": "How has your shopping behavior changed with e-commerce?",
+        "category": "Retail",
+        "totalVotes": 210,
+        "createdAt": "2023-02-10T17:45:00Z",
+        "likeCount": 170,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey7",
+        "title": "Travel Preferences Post-COVID",
+        "description": "How have your travel preferences changed post-COVID?",
+        "category": "Travel",
+        "totalVotes": 220,
+        "createdAt": "2023-03-10T11:15:00Z",
+        "likeCount": 180,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey8",
+        "title": "Impact of Social Media on Society",
+        "description": "What impact do you think social media has on society?",
+        "category": "Social",
+        "totalVotes": 230,
+        "createdAt": "2023-01-20T13:20:00Z",
+        "likeCount": 190,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey9",
+        "title": "Advancements in Electric Vehicles",
+        "description": "Share your thoughts on the future of electric vehicles.",
+        "category": "Technology",
+        "totalVotes": 240,
+        "createdAt": "2023-02-22T14:10:00Z",
+        "likeCount": 200,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey10",
+        "title": "Dietary Choices and Climate Change",
+        "description": "How do dietary choices impact climate change?",
+        "category": "Environment",
+        "totalVotes": 250,
+        "createdAt": "2023-02-05T16:00:00Z",
+        "likeCount": 210,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey11",
+        "title": "Remote Learning in Education",
+        "description": "How effective is remote learning in education?",
+        "category": "Education",
+        "totalVotes": 260,
+        "createdAt": "2023-03-03T18:30:00Z",
+        "likeCount": 220,
+        "dislikeCount": 40
+    },
+    {
+        "id": "survey12",
+        "title": "Innovations in Renewable Energy",
+        "description": "What are the latest innovations in renewable energy?",
+        "category": "Technology",
+        "totalVotes": 270,
+        "createdAt": "2023-01-15T19:45:00Z",
+        "likeCount": 230,
+        "dislikeCount": 40
+    }
+]
