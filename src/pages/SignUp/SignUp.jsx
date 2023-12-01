@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
-import Navbar from "../Shared/Navbar/Navbar";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 
@@ -12,6 +13,7 @@ const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = data => {
         createUser(data.email, data.password)
@@ -19,13 +21,22 @@ const SignUp = () => {
                 console.log(result.user);
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        reset();
-                        Swal.fire({
-                            title: "Sucess",
-                            text: "User is successfully created",
-                            icon: "success"
-                        });
-                        navigate('/');
+                        axiosPublic.post('/users', {
+                            name: data.name,
+                            email: data.email,
+                            role: 'user'
+                        })
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        title: "Sucess",
+                                        text: "User is successfully created",
+                                        icon: "success"
+                                    });
+                                    navigate('/');
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error.message);
@@ -39,12 +50,6 @@ const SignUp = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>
-                    Bistro Boss | Sign Up
-                </title>
-            </Helmet> */}
-            <Navbar/>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
@@ -90,6 +95,7 @@ const SignUp = () => {
                         </form>
                         <p className='text-center pb-4'><small>Already have an Account? <Link className="text-red-600 font-medium text-base" to="/login">Login</Link></small></p>
                         <div className="flex justify-center">
+                            <SocialLogin />
                         </div>
                     </div>
                 </div>

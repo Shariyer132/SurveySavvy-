@@ -1,24 +1,23 @@
-import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SurveyDetailsCard from "./SurveyDetailsCard";
+    
+    const SurveyDetails = () => {
+        const axiosPublic = useAxiosPublic();
 
-const SurveyDetails = () => {
-    const { id } = useParams();
-    const { data: surveys = [] } = useQuery({
-        queryKey: ['surveys'],
-        queryFn: async () => {
-            const res = await useAxiosPublic.get('http://localhost:5000/surveys');
-            return res.data;
-        }
-    })
-
-    const specificSurvey = surveys.find(item => item._id === id);
-    const { category } = specificSurvey;
-    console.log(specificSurvey);
+    const { data: surveys = [], refetch } = useQuery({
+                queryKey: ['surveys'],
+                queryFn: async () => {
+                    const res = await axiosPublic.get('/surveys');
+                    return res.data;
+                }
+            })
 
     return (
-        <div>
-            <h3>{category}</h3>
+        <div className="flex flex-col pt-20  gap-3">
+            {
+                surveys.map(survey=><SurveyDetailsCard refetch={refetch} key={survey._id} item={survey}/>)
+            }
         </div>
     );
 };

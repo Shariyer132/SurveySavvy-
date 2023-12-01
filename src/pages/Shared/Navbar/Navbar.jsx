@@ -10,15 +10,17 @@ const Navbar = () => {
             .then(result => console.log(result.user))
             .catch(error => console.log(error.message))
     }
+    const surveyor = true;
 
     const navOptions = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="surveys">Surveys</NavLink></li>
-        <li><NavLink>dashboard</NavLink></li>
-        <li><NavLink to="/menu">our menu</NavLink></li>
-        <li><NavLink to="/order/salads">Order now</NavLink></li>
+        <li><NavLink to="/surveys">Surveys</NavLink></li>
+        {
+            surveyor && <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+
+        }
         <li>
-            <Link to="/dashboard/cart">
+            <Link to="">
                 <button className='btn btn-sm'>
                     <FaShoppingCart />
                     <div className="badge badge-secondary">+0</div>

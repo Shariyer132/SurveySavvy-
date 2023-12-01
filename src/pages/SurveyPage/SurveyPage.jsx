@@ -1,24 +1,27 @@
 
 import Servey from "../../components/SurveyCart/Servey";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useMemo, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 
 
 const SurveyPage = () => {
     const [filter, setFilter] = useState({ title: '', category: '', mostVoted: false });
+    const axiosPublic = useAxiosPublic();
     const { data: surveys = [], isLoading } = useQuery({
         queryKey: ['surveys'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/surveys');
+            const res = await axiosPublic.get('/surveys');
             return res.data;
         }
     })
     console.log(surveys);
+    const publishedSurveys = surveys.filter(survey=>survey.status==='Published' )
     
         const filteredSurveys = useMemo(() => {
-            let filtered = surveys;
+            let filtered = publishedSurveys;
             if (filter.title) {
                 filtered = filtered.filter(survey => survey.title.toLowerCase().includes(filter.title.toLowerCase()));
             }
@@ -30,7 +33,7 @@ const SurveyPage = () => {
             }
     
             return filtered;
-        }, [filter, surveys]);
+        }, [filter, publishedSurveys]);
     
         const handleFilterChange = (e) => {
             setFilter({ ...filter, [e.target.name]: e.target.value });
@@ -68,6 +71,7 @@ const SurveyPage = () => {
                         onChange={() => setFilter({ ...filter, mostVoted: !filter.mostVoted })}
                     />
                 </label>
+               <Link to="/dashboard/payment"> <button className="btn btn-info">Become a Pro User</button></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:px-6 pb-20 mx-auto">
                 {
