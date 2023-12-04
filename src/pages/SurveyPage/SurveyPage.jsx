@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import useUserRole from "../../hooks/useUserRole";
 
 
 
@@ -17,27 +19,27 @@ const SurveyPage = () => {
             return res.data;
         }
     })
-    console.log(surveys);
-    const publishedSurveys = surveys.filter(survey=>survey.status==='Published' )
-    
-        const filteredSurveys = useMemo(() => {
-            let filtered = publishedSurveys;
-            if (filter.title) {
-                filtered = filtered.filter(survey => survey.title.toLowerCase().includes(filter.title.toLowerCase()));
-            }
-            if (filter.category) {
-                filtered = filtered.filter(survey => survey.category.toLowerCase().includes(filter.category.toLowerCase()));
-            }
-            if (filter.mostVoted) {
-                filtered = filtered.sort((a, b) => b.totalVotes - a.totalVotes);
-            }
-    
-            return filtered;
-        }, [filter, publishedSurveys]);
-    
-        const handleFilterChange = (e) => {
-            setFilter({ ...filter, [e.target.name]: e.target.value });
-        };
+    const [proUser] = useUserRole("pro-user");
+    const publishedSurveys = surveys.filter(survey => survey.status === 'Published')
+
+    const filteredSurveys = useMemo(() => {
+        let filtered = publishedSurveys;
+        if (filter.title) {
+            filtered = filtered.filter(survey => survey.title.toLowerCase().includes(filter.title.toLowerCase()));
+        }
+        if (filter.category) {
+            filtered = filtered.filter(survey => survey.category.toLowerCase().includes(filter.category.toLowerCase()));
+        }
+        if (filter.mostVoted) {
+            filtered = filtered.sort((a, b) => b.totalVotes - a.totalVotes);
+        }
+
+        return filtered;
+    }, [filter, publishedSurveys]);
+
+    const handleFilterChange = (e) => {
+        setFilter({ ...filter, [e.target.name]: e.target.value });
+    };
 
 
 
@@ -48,6 +50,9 @@ const SurveyPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Survey Savvy | Surveys</title>
+            </Helmet>
             <div className="pt-24 pb-10 flex justify-center items-center gap-7">
                 <input
                     type="text"
@@ -71,7 +76,9 @@ const SurveyPage = () => {
                         onChange={() => setFilter({ ...filter, mostVoted: !filter.mostVoted })}
                     />
                 </label>
-               <Link to="/dashboard/payment"> <button className="btn btn-info">Become a Pro User</button></Link>
+                {
+                  proUser ? <></> : <Link to="/dashboard/payment"> <button className="btn btn-info">Become a Pro User</button></Link>
+                }
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:px-6 pb-20 mx-auto">
                 {

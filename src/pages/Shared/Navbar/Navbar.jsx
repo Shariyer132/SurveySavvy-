@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
+import useUserRole from '../../../hooks/useUserRole';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -10,23 +11,27 @@ const Navbar = () => {
             .then(result => console.log(result.user))
             .catch(error => console.log(error.message))
     }
-    const surveyor = true;
+    const [ normalUser ] = useUserRole("user")
+    const [ proUser ] = useUserRole("pro-user")
+    const [ admin ] = useUserRole("admin")
+    const [ surveyor ] = useUserRole("surveyor")
+    console.log(admin, proUser, surveyor);
 
     const navOptions = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/surveys">Surveys</NavLink></li>
         {
-            surveyor && <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-
+            user && normalUser && <li><NavLink to="/dashboard/userHome">Dashboard</NavLink></li>
         }
-        <li>
-            <Link to="">
-                <button className='btn btn-sm'>
-                    <FaShoppingCart />
-                    <div className="badge badge-secondary">+0</div>
-                </button>
-            </Link>
-        </li>
+        {
+            user && proUser && <li><NavLink to="/dashboard/proUserHome">Dashboard</NavLink></li>
+        }
+        {
+            user && admin &&<li><NavLink to="/dashboard/adminHome">Dashboard</NavLink></li>
+        }
+        {
+            user && surveyor &&<li><NavLink to="/dashboard/surveyorHome">Dashboard</NavLink></li>
+        }
         {
             user ? <>
                 <button onClick={handleLogOut} className='btn'>log out</button>
@@ -46,6 +51,7 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             {navOptions}
                         </ul>
+                        {/* <FaUser/> */}
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">SurveySavvy</a>
                 </div>
@@ -57,7 +63,9 @@ const Navbar = () => {
                 <div className="navbar-end">
                     <label className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            {
+                                user ? <img src={user?.photoURL} /> : <FaUserCircle/>
+                            }
                         </div>
                     </label>
                 </div>

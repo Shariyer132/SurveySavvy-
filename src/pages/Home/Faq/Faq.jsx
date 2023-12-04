@@ -1,12 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import img  from '../../../assets/download__1_-removebg-preview.png';
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Faq = () => {
     const [faqs, setFaqs] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
-        axios('Faq.json')
+        axiosPublic.get('/faqs')
             .then(res => {
                 setFaqs(res.data)
             })

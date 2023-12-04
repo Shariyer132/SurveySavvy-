@@ -2,9 +2,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
-import useProUser from "../../../hooks/useProUser";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import useUserRole from "../../../hooks/useUserRole";
 
 const CheckOutForm = () => {
     const [error, setError] = useState('');
@@ -14,9 +15,9 @@ const CheckOutForm = () => {
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    const isProUser = useProUser();
+    const [isProUser] = useUserRole("pro-user");
+    const navigate = useNavigate();
     console.log(isProUser);
-    console.log(clientSecret, 'from check out');
 
     const { data: users = [] } = useQuery({
         queryKey: ['users'],
@@ -26,7 +27,7 @@ const CheckOutForm = () => {
         }
     })
 
-    const reqUser = users.find(mongoUser=> mongoUser?.email === user?.email);
+    const reqUser = users.find(mongoUser => mongoUser?.email === user?.email);
     console.log(reqUser);
 
     useEffect(() => {
@@ -37,12 +38,12 @@ const CheckOutForm = () => {
             })
     }, [axiosSecure,])
 
-    useEffect(()=>{
+    useEffect(() => {
         axiosSecure('/users')
-        .then(res=>{
-            console.log(res.data);
-        })
-    },[])
+            .then(res => {
+                console.log(res.data);
+            })
+    }, [])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -50,7 +51,6 @@ const CheckOutForm = () => {
         if (!stripe || !elements) {
             return;
         }
-
         const card = elements.getElement(CardElement);
 
         if (card === null) {
@@ -65,6 +65,22 @@ const CheckOutForm = () => {
         if (error) {
             console.log('Payment error', error);
             setError(error.message)
+        }
+        if (reqUser.role === 'admin' || reqUser.role === 'surveyor') {
+            return (
+                Swal.fire({
+                    icon: "error",
+                    text: `you are a ${reqUser.role}`
+                })
+            )
+        }
+        if (reqUser.role === 'pro-user') {
+            return (
+                Swal.fire({
+                    icon: "error",
+                    text: `you are already ${reqUser.role}`
+                })
+            )
         }
         else {
             console.log('payment method', paymentMethod);
@@ -88,48 +104,63 @@ const CheckOutForm = () => {
             console.log('payment intent', paymentIntent);
             if (paymentIntent.status === 'succeeded') {
                 setTransactionId(paymentIntent.id);
-             if (reqUser.role === 'user') {
-                axiosSecure.patch(`/users/role/${reqUser._id}`, { role: "pro-user" })
-                .then(res=>{
-                    console.log(res.data);
-                  if (res.data.modifiedCount > 0) {
-                    Swal.fire({
-                        title: "Sucess",
-                        text: "You have become a Pro-user",
-                        icon: "success"
-                    });
-                  }
-                })
-             }
+                // user role update
+                if (reqUser.role === 'user') {
+                    axiosSecure.patch(`/users/role/${reqUser._id}`, { role: "pro-user" })
+                        .then(res => {
+                            console.log(res.data);
+                            if (res.data.modifiedCount > 0) {
+                                Swal.fire({
+                                    title: "Sucess",
+                                    text: "You have become a Pro-user",
+                                    icon: "success"
+                                });
+                            }
+                        })
+                }
+                //  saved user payment in database
+                const payment = {
+                    email: user?.email,
+                    price: 50,
+                    date: new Date(),
+                    name: user?.displayName,
+                    transactionId: paymentIntent?.id
+                }
+                const res = await axiosSecure.post('/payments', payment);
+                console.log('payment success', res.data);
+                navigate('/surveys')
             }
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: "#423770",
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <>
+     
+            <form onSubmit={handleSubmit}>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: "#423770",
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
                             },
-                        },
-                        invalid: {
-                            color: '#9e2146'
+                            invalid: {
+                                color: '#9e2146'
+                            }
                         }
-                    }
-                }}
-            />
+                    }}
+                />
 
-            <button className="btn btn-sm btn-info my-4" type="submit" disabled={!stripe || !clientSecret}>
-                Pay
-            </button>
-            <p className="text-red-500">{error}</p>
-            {transactionId && <p className="text-green-600">Your transaction id: {transactionId}</p>}
-        </form>
+                <button className="btn btn-sm btn-info my-4" type="submit" disabled={!stripe || !clientSecret}>
+                    Pay
+                </button>
+                <p className="text-red-500">{error}</p>
+                {transactionId && <p className="text-green-600">Your transaction id: {transactionId}</p>}
+            </form>
+        </>
     );
 };
 

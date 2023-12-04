@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,12 +6,14 @@ import 'swiper/css/pagination'
 import { FaQuoteLeft } from "react-icons/fa";
 
 import { Pagination } from 'swiper/modules';
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
-        axios('Testimonials.json')
+        axiosPublic.get('/testimonial')
             .then(res => {
                 setReviews(res.data)
             })

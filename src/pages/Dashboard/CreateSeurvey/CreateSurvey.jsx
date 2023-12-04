@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const CreateSurvey = () => {
@@ -41,6 +42,7 @@ const CreateSurvey = () => {
 
     return (
         <div>
+            <Helmet>Dashboard | Create Survey</Helmet>
             <h2 className='text-4xl font-normal text-center py-8'>Create a Survey</h2>
             <form onSubmit={handleSubmit(onSubmit)} className='max-w-5xl mx-auto'>
                 <div className='flex flex-col gap-4'>

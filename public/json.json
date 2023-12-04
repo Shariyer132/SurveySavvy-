@@ -1,0 +1,212 @@
+[
+    {
+        "voteYes": 1,
+        "voteNo": 1,
+        "title": "Renewable Energy Project",
+        "description": "Survey on public opinion about investing in renewable energy projects.",
+        "likes": 20,
+        "dislikes": 5,
+        "category": "Environment",
+        "createdAt": "2023-09-01",
+        "status": "Pending",
+        "comments": [
+            {
+                "text": "Inappropriate Content",
+                "userId": "shariyer132@gmail.com"
+            },
+            {
+                "text": "Inappropriate Content",
+                "userId": "sojol@gmail.com"
+            }
+        ],
+        "voters": [
+            {
+                "voterEmail": "shariyer132@gmail.com",
+                "voterName": "Shariyer Hossain",
+                "voted": "Yes",
+                "date": "2023-09-02"
+            },
+            {
+                "voterEmail": "sojol@gmail.com",
+                "voterName": "Sojol",
+                "voted": "No",
+                "date": "2023-09-02"
+            }
+        ]
+    },
+    {
+        "voteYes": 1,
+        "voteNo": 1,
+        "title": "Public Transport Improvement",
+        "description": "Vote on the new public transport improvement initiatives.",
+        "likes": 14,
+        "dislikes": 3,
+        "category": "Infrastructure",
+        "createdAt": "2023-08-15",
+        "status": "Pending",
+        "comments": [
+            {
+                "text": "Inappropriate Content",
+                "userId": "anower@gmail.com"
+            },
+            {
+                "text": "Inappropriate Content",
+                "userId": "rimon@gmail.com"
+            }
+        ],
+        "voters": [
+            {
+                "voterEmail": "anower@gmail.com",
+                "voterName": "Anower Hossain",
+                "voted": "Yes",
+                "date": "2023-08-16"
+            },
+            {
+                "voterEmail": "rimon@gmail.com",
+                "voterName": "Rimon Hossain",
+                "voted": "No",
+                "date": "2023-08-16"
+            }
+        ]
+    },
+    {
+        "voteYes": 1,
+        "voteNo": 1,
+        "title": "Healthcare System Reform",
+        "description": "A survey to gather public opinion on proposed healthcare system reforms.",
+        "likes": 10,
+        "dislikes": 2,
+        "category": "Health",
+        "createdAt": "2023-07-20",
+        "status": "Pending",
+        "comments": [
+            {
+                "text": "Inappropriate Content",
+                "userId": "shariyer132@gmail.com"
+            },
+            {
+                "text": "Inappropriate Content",
+                "userId": "shariyer49557@gmail.com"
+            }
+        ],
+        "voters": [
+            {
+                "voterEmail": "shariyer132@gmail.com",
+                "voterName": "Shariyer Hossain",
+                "voted": "Yes",
+                "date": "2023-07-21"
+            },
+            {
+                "voterEmail": "shariyer49557@gmail.com",
+                "voterName": "Shariyer Hossain",
+                "voted": "No",
+                "date": "2023-07-21"
+            }
+        ]
+    },
+    {
+        "voteYes": 1,
+        "voteNo": 1,
+        "title": "Educational Curriculum Update",
+        "description": "Vote on the updates to the national educational curriculum.",
+        "likes": 21,
+        "dislikes": 6,
+        "category": "Education",
+        "createdAt": "2023-06-30",
+        "status": "Pending",
+        "comments": [
+            {
+                "text": "Inappropriate Content",
+                "userId": "riham@gmail.com"
+            },
+            {
+                "text": "Inappropriate Content",
+                "userId": "anower@gmail.com"
+            }
+        ],
+        "voters": [
+            {
+                "voterEmail": "riham@gmail.com",
+                "voterName": "Riham Chowdury",
+                "voted": "Yes",
+                "date": "2023-07-01"
+            },
+            {
+                "voterEmail": "anower@gmail.com",
+                "voterName": "Anower Hossain",
+                "voted": "No",
+                "date": "2023-07-01"
+            }
+        ]
+    },
+    {
+        "voteYes": 1,
+        "voteNo": 1,
+        "title": "Public Safety Measures",
+        "description": "Survey on the implementation of new public safety measures in urban areas.",
+        "likes": 300,
+        "dislikes": 150,
+        "category": "Safety",
+        "createdAt": "2023-06-10",
+        "status": "Pending",
+        "comments": [
+            {
+                "text": "Inappropriate Content.",
+                "userId": "rimon@gmail.com"
+            },
+            {
+                "text": "Inappropriate Content",
+                "userId": "bistroboss@gmail.com"
+            }
+        ],
+        "voters": [
+            {
+                "voterEmail": "rimon@gmail.com",
+                "voterName": "Rimon Hossain",
+                "voted": "Yes",
+                "date": "2023-06-11"
+            },
+            {
+                "voterEmail": "bistroboss@gmail.com",
+                "voterName": "Bistro Boss",
+                "voted": "No",
+                "date": "2023-06-11"
+            }
+        ]
+    },
+    {
+        "voteYes": 1,
+        "voteNo": 1,
+        "title": "Expansion of Public Parks",
+        "description": "Public opinion survey on expanding public parks in the city.",
+        "likes": 18,
+        "dislikes": 3,
+        "category": "Environment",
+        "createdAt": "2023-05-25",
+        "status": "Pending",
+        "comments": [
+            {
+                "text": "Inappropriate Content",
+                "userId": "sojol@gmail.com"
+            },
+            {
+                "text": "Inappropriate Content",
+                "userId": "shariyer49557@gmail.com"
+            }
+        ],
+        "voters": [
+            {
+                "voterEmail": "sojol@gmail.com",
+                "voterName": "Sojol",
+                "voted": "Yes",
+                "date": "2023-05-26"
+            },
+            {
+                "voterEmail": "shariyer49557@gmail.com",
+                "voterName": "Shariyer",
+                "voted": "No",
+                "date": "2023-05-26"
+            }
+        ]
+    }
+]

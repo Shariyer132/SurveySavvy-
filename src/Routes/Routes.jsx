@@ -14,6 +14,12 @@ import AdminRoute from "./AdminRoute";
 import SurveyResponse from "../pages/Dashboard/SurveyResponse/SurveyResponse";
 import UsersPayments from "../pages/Dashboard/UserPayments/UsersPayments";
 import Payment from "../pages/Dashboard/UserPayment/Payment";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import SurveyorHome from "../pages/Dashboard/SurveyorHome/SurveyorHome";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import PrivateRoute from "./PrivateRoute";
+import ProUserHome from "../pages/Dashboard/ProUserHome/ProUserHome";
+import CreatedSurvey from "../pages/Dashboard/MyCreatedSurvey.jsx/CreatedSurvey";
 
 
 
@@ -48,19 +54,40 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             // normal user routes
             {
                 path: "payment",
                 element: <Payment/>
             },
+            {
+                path: "userHome",
+                element: <UserHome/>
+            },
+            // pro user
+            {
+                path: "proUserHome",
+                element: <ProUserHome/>
+            },
             // surveyor routes
             {
                 path: "createSurvey",
                 element: <CreateSurvey />
             },
+            {
+                path: "surveyorHome",
+                element: <SurveyorHome/>
+            },
+            {
+                path: "mySurvey",
+                element: <CreatedSurvey/>
+            },
             // admin routes
+            {
+                path: "adminHome",
+                element: <AdminHome/>
+            },
             {
                 path: "manageUsers",
                 element: <AdminRoute><AllUsers /></AdminRoute>
@@ -71,7 +98,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "surveyResponse",
-                element: <AdminRoute><SurveyResponse /></AdminRoute>
+                element:<SurveyResponse />
             },
             {
                 path: "payments",

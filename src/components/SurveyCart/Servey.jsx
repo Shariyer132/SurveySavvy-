@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
 const Servey = ({ item }) => {
-    const { title, description, totalVotes, category } = item;
-const navigate = useNavigate();
+    const { title, description, voteYes, voteNo, category } = item;
+    const navigate = useNavigate();
+    const totalvotes = parseInt(voteYes) + parseInt(voteNo)
 
-    const handleViewDetails = () =>{
+    const handleViewDetails = () => {
         navigate("/surveyDetails")
     }
     return (
@@ -12,7 +13,7 @@ const navigate = useNavigate();
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <h3>{category}</h3>
-                <p>Total Voted: {totalVotes || 0}</p>
+                <p>Total Voted: { totalvotes || 0}</p>
                 <p>{description}</p>
             </div>
         </div>
